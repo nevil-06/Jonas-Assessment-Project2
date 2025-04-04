@@ -1,0 +1,62 @@
+[
+  {
+    "question": "List all customers from Germany",
+    "expected_sql": "SELECT CustomerID, CompanyName, Country FROM Customers WHERE Country = 'Germany';"
+  },
+  {
+    "question": "What are the top 5 most expensive products?",
+    "expected_sql": "SELECT ProductName, UnitPrice FROM Products ORDER BY UnitPrice DESC LIMIT 5;"
+  },
+  {
+    "question": "Find all orders shipped to Brazil",
+    "expected_sql": "SELECT OrderID, CustomerID, ShipCountry FROM Orders WHERE ShipCountry = 'Brazil';"
+  },
+  {
+    "question": "Show the number of orders placed by each customer",
+    "expected_sql": "SELECT CustomerID, COUNT(*) AS OrderCount FROM Orders GROUP BY CustomerID;"
+  },
+  {
+    "question": "List product names and their category names",
+    "expected_sql": "SELECT Products.ProductName, Categories.CategoryName FROM Products JOIN Categories ON Products.CategoryID = Categories.CategoryID;"
+  },
+  {
+    "question": "What is the average price of all products?",
+    "expected_sql": "SELECT AVG(UnitPrice) AS AvgPrice FROM Products;"
+  },
+  {
+    "question": "List the total quantity ordered per product",
+    "expected_sql": "SELECT ProductID, SUM(Quantity) AS TotalQuantity FROM [Order Details] GROUP BY ProductID;"
+  },
+  {
+    "question": "Get all orders made in 1997",
+    "expected_sql": "SELECT OrderID, OrderDate FROM Orders WHERE strftime('%Y', OrderDate) = '1997';"
+  },
+  {
+    "question": "Show all customers whose name starts with A",
+    "expected_sql": "SELECT CustomerID, CompanyName FROM Customers WHERE CompanyName LIKE 'A%';"
+  },
+  {
+    "question": "Get the name of the second most expensive product",
+    "expected_sql": "SELECT ProductName, UnitPrice FROM Products ORDER BY UnitPrice DESC LIMIT 1 OFFSET 1;"
+  },
+  {
+    "question": "List all discontinued products",
+    "expected_sql": "SELECT ProductID, ProductName FROM Products WHERE Discontinued = '1';"
+  },
+  {
+    "question": "Find the total freight charges by country",
+    "expected_sql": "SELECT ShipCountry, SUM(Freight) AS TotalFreight FROM Orders GROUP BY ShipCountry;"
+  },
+  {
+    "question": "Find all orders without a shipped date",
+    "expected_sql": "SELECT OrderID FROM Orders WHERE ShippedDate IS NULL;"
+  },
+  {
+    "question": "Which countries have more than 5 customers?",
+    "expected_sql": "SELECT Country, COUNT(*) AS CustomerCount FROM Customers GROUP BY Country HAVING COUNT(*) > 5;"
+  },
+  {
+    "question": "Show each customer's name and number of orders",
+    "expected_sql": "SELECT Customers.CompanyName, COUNT(Orders.OrderID) AS OrderCount FROM Customers LEFT JOIN Orders ON Customers.CustomerID = Orders.CustomerID GROUP BY Customers.CustomerID;"
+  }
+]
