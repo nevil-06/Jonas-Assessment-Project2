@@ -24,19 +24,19 @@ while True:
         break
 
     sql_query = generate_sql_from_nl(user_input, schema_info)
-    # optimized_query = optimize_sql_query(sql_query)
-    # if not is_safe_query(optimized_query):
-    #     print("🚫 Only SELECT queries are allowed. Please rephrase.")
-    #     continue
+    optimized_query = optimize_sql_query(sql_query, user_input)
+    if not is_safe_query(optimized_query):
+        print("🚫 Only SELECT queries are allowed. Please rephrase.")
+        continue
     print("\n🧠 Generated SQL:\n", sql_query)
-    # print("⚡ Optimized SQL:\n", optimized_query)
+    print("⚡ Optimized SQL:\n", optimized_query)
 
     # result = execute_sql(optimized_query)
-    if "error" in sql_query:
-        print("❌ Error:", sql_query["error"])
+    # if "error" in result:
+    #     print("❌ Error:", result["error"])
 
-    else:
-        print("✅ Result:")
-        print(sql_query["columns"])
-        for row in sql_query["rows"]:
-            print(row)
+    # else:
+    #     print("✅ Result:")
+    #     print(result["columns"])
+    #     for row in result["rows"]:
+    #         print(row)

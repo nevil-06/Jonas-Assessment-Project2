@@ -9,19 +9,6 @@ def is_safe_query(query):
     except Exception:
         return False
 
-# def execute_sql(query, db_path="data/northwind.db"):
-#     try:
-#         conn = sqlite3.connect(db_path)
-#         cursor = conn.cursor()
-#         cursor.execute(query)
-#         rows = cursor.fetchall()
-#         columns = [description[0] for description in cursor.description]
-#         conn.close()
-#         return {"columns": columns, "rows": rows}
-#     except Exception as e:
-#         return {"error": str(e)}
-
-
 def execute_sql(query, db_path="data/northwind.db"):
     try:
         conn = sqlite3.connect(db_path)
