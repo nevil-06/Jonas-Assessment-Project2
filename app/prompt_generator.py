@@ -1,11 +1,11 @@
 # prompt_generator.py
 from openai import OpenAI
 from dotenv import load_dotenv
-
+import os
 load_dotenv()
 
 # Replace 'your-api-key' with your actual OpenAI API key
-key = ""
+key = os.environ.get("OPENAI_API_KEY")
 client = OpenAI(api_key= key)
 
 def generate_sql_from_nl(nl_query, schema_prompt):

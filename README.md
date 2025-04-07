@@ -30,17 +30,28 @@ It includes:
 ```
 ## 🚀 Setup Instructions
 
-### 1. Install Dependencies
+### 1. Create and Activate a Virtual Environment
+🔹 On macOS / Linux:
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+🔹 On Windows:
+```bashpython -m venv venv
+venv\Scripts\activate
+```
+Once activated, you should see (venv) in your terminal prompt.
+### 2. Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. Add your OpenAI API key
+### 3. Add your OpenAI API key
 ```env
 OPENAI_API_KEY=your-openai-key
 ```
 
-### 3. Initialize the database
+### 4. Initialize the database
 ```bash
 python setup/initialize_db.py
 ```
