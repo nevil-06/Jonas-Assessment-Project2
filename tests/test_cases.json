@@ -1,0 +1,82 @@
+[
+  {
+    "question": "Show all customers from Germany",
+    "expected_sql": "SELECT CustomerID, CompanyName, Country FROM Customers WHERE Country = 'Germany';"
+  },
+  {
+    "question": "List all discontinued products",
+    "expected_sql": "SELECT ProductID, ProductName FROM Products WHERE Discontinued = '1';"
+  },
+  {
+    "question": "Give me all orders placed in 1997",
+    "expected_sql": "SELECT OrderID, OrderDate FROM Orders WHERE strftime('%Y', OrderDate) = '1997';"
+  },
+  {
+    "question": "Get all products in the database with their price",
+    "expected_sql": "SELECT ProductName, UnitPrice FROM Products;"
+  },
+  {
+    "question": "Show all order details for every order",
+    "expected_sql": "SELECT OrderID, ProductID, UnitPrice, Quantity, Discount FROM [Order Details];"
+  },
+  {
+    "question": "Show all countries we have shipped to",
+    "expected_sql": "SELECT DISTINCT ShipCountry FROM Orders;"
+  },
+  {
+    "question": "List all customer names from the UK",
+    "expected_sql": "SELECT CompanyName FROM Customers WHERE Country = 'UK';"
+  },
+  {
+    "question": "Return all products that cost more than 100",
+    "expected_sql": "SELECT ProductName, UnitPrice FROM Products WHERE UnitPrice > 100;"
+  },
+  {
+    "question": "Give me all customers whose name starts with A",
+    "expected_sql": "SELECT CustomerID, CompanyName FROM Customers WHERE CompanyName LIKE 'A%';"
+  },
+  {
+    "question": "Retrieve all categories from the catalog",
+    "expected_sql": "SELECT CategoryID, CategoryName FROM Categories;;"
+  },
+  { 
+    "question": "List the most recent orders",
+    "expected_sql": "SELECT OrderID, OrderDate FROM Orders ORDER BY OrderDate DESC LIMIT 100;"
+  },
+  {
+    "question": "What are the top 5 most expensive products?",
+    "expected_sql": "SELECT ProductName, UnitPrice FROM Products ORDER BY UnitPrice DESC LIMIT 5;"
+  },
+  {
+    "question": "Show total number of orders per country",
+    "expected_sql": "SELECT ShipCountry, COUNT(*) AS TotalOrders FROM Orders GROUP BY ShipCountry LIMIT 100;"
+  },
+  {
+    "question": "Get product names and their category names",
+    "expected_sql": "SELECT p.ProductName, cat.CategoryName FROM Products p JOIN Categories cat ON p.CategoryID = cat.CategoryID LIMIT 100;"
+  },
+  {
+    "question": "List customers with more than 2 orders",
+    "expected_sql": "SELECT c.CustomerID, COUNT(*) AS OrderCount FROM Customers c JOIN Orders o ON c.CustomerID = o.CustomerID GROUP BY c.CustomerID HAVING COUNT(*) > 2 LIMIT 100;"
+  },
+  {
+    "question": "Find products ordered more than 100 times",
+    "expected_sql": "SELECT ProductID, SUM(Quantity) AS TotalQuantity FROM [Order Details] GROUP BY ProductID HAVING SUM(Quantity) > 100 LIMIT 100;"
+  },
+  {
+    "question": "Show all orders without a shipped date",
+    "expected_sql": "SELECT OrderID FROM Orders WHERE ShippedDate IS NULL;"
+  },
+  {
+    "question": "Get average unit price of products",
+    "expected_sql": "SELECT AVG(UnitPrice) AS AvgPrice FROM Products LIMIT 100;"
+  },
+  {
+    "question": "Which countries have more than 5 customers?",
+    "expected_sql": "SELECT Country, COUNT(*) AS CustomerCount FROM Customers GROUP BY Country HAVING COUNT(*) > 5 LIMIT 100;"
+  },
+  {
+    "question": "What is the total revenue per order?",
+    "expected_sql": "SELECT OrderID, SUM(UnitPrice * Quantity * (1 - Discount)) AS TotalRevenue FROM [Order Details] GROUP BY OrderID LIMIT 100;"
+  }
+]
