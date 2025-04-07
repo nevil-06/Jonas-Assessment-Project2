@@ -30,13 +30,3 @@ while True:
         continue
     print("\n🧠 Generated SQL:\n", sql_query)
     print("⚡ Optimized SQL:\n", optimized_query)
-
-    # result = execute_sql(optimized_query)
-    # if "error" in result:
-    #     print("❌ Error:", result["error"])
-
-    # else:
-    #     print("✅ Result:")
-    #     print(result["columns"])
-    #     for row in result["rows"]:
-    #         print(row)
